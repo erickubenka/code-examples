@@ -2,14 +2,22 @@
 	<head>
 		<title>Style a input file element</title>
 		<!-- web reference to tiwtter bootstrap -->
-		
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+
+		<!-- my styles -->
+		<link href="default.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span3 well">
 					<form method="post">
-						<input type="file" name="upload" id="upload" class="input file">
+						<div class="btn btn-primary btn-block upload-button">
+							<input type="file" name="upload" id="upload" class="input">
+							Choose File
+						</div>
 					</form>
 				</div>
 			</div>
