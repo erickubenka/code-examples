@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 Route::get('/', function()
 {
 	return View::make('hello');
@@ -25,7 +14,7 @@ Route::get('/user/add', function(){
 	$usr->deleted_at = null;
 	$usr->save();
 
-	echo "user added";
+	return "user added";
 });
 
 /**
@@ -34,19 +23,26 @@ Route::get('/user/add', function(){
 Route::get('/user/delete/{id}', function($id){
 
 	$usr = User::find($id);
-	$usr->delete();
-
-	"echo user deleted , softly";
+	if(isset($usr))
+	{
+		$usr->delete();
+		return 'User '.$usr->username.' with id '.$usr->id.' deleted, softly';
+	}
+	return "nothing to delete";
 });
 
 /**
 * Delete specified user hard
 */
 Route::get('/user/forcedelete/{id}', function($id){
-	$usr = User::find($id);
-	$usr->forceDelete();
 
-	echo "user deleted";
+	$usr = User::find($id);
+	if(isset($usr))
+	{
+		$usr->forceDelete();
+		return 'User '.$usr->username.' with id '.$usr->id.' deleted';
+	}
+	return "nothing do delete";
 });
 
 /**
@@ -54,8 +50,14 @@ Route::get('/user/forcedelete/{id}', function($id){
 */
 Route::get('/user/restore/{id}', function($id){
 
-	User::trashed()->where('id', '=', $id)->first()->restore();
-	echo $usr->username.' with id '.$usr->id.' restored';
+
+	$usr = User::trashed()->where('id', '=', $id)->first();
+
+	if(isset($usr))
+	{
+		$usr->restore();
+		return $usr->username.' with id '.$usr->id.' restored';
+	}
 });
 
 
@@ -63,8 +65,15 @@ Route::get('/user/restore/{id}', function($id){
 * Display all non-trashed users
 */
 Route::get('/user', function(){
-	foreach (User::all() as $usr) {
-		echo $usr->username.' with id: '.$usr->id.' - deleted_at: '.$usr->deleted_at.'<br>';
+
+	$user = User::all();
+
+	if(isset($user))
+	{
+		foreach ($user as $usr) {
+			echo $usr->username.' with id: '.$usr->id.' - deleted_at: '.$usr->deleted_at.'<br>';
+		}
+		return;
 	}
 });
 
@@ -72,8 +81,15 @@ Route::get('/user', function(){
 * Display all users incl. trashed
 */
 Route::get('/user/all', function(){
-	foreach (User::withTrashed()->where('id', '>', '0')->get() as $usr) {
-		echo $usr->username.' with id: '.$usr->id.' - deleted_at: '.$usr->deleted_at.'<br>';
+
+	$user = User::withTrashed()->get();
+
+	if(isset($user))
+	{
+		foreach ($user as $usr) {
+			echo $usr->username.' with id: '.$usr->id.' - deleted_at: '.$usr->deleted_at.'<br>';
+		}
+		return;
 	}
 });
 
@@ -82,7 +98,13 @@ Route::get('/user/all', function(){
 */
 Route::get('/user/trashed', function(){
 
-	$users = User::trashed()->where('account_id', 1)->get();
-	
+	$user = User::trashed()->get();
 
+	if(isset($user))
+	{
+		foreach ($user as $usr) {
+			echo $usr->username.' with id: '.$usr->id.' - deleted_at: '.$usr->deleted_at.'<br>';
+		}
+		return;
+	}
 });
