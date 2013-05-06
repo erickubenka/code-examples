@@ -1,13 +1,10 @@
-## Laravel 4.x
+## Code Example / Snippet - Laravel 4: How to use Soft Delete 
 
-### A Framework For Web Artisans
+Example how to use the new Laravel 4 Soft-Delete Methods for the default Users-Class.
 
-[Official Documentation](http://four.laravel.com) (Under Active Development)
+- includes the database-migration-file
+- includes the changes on Users-Class for activating the Soft-Delete-Methods
+- include routes for soft-delete, hard-delete, restore and add users
+- include routes to display all users, trashed users only, active users only
 
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+That's it.
