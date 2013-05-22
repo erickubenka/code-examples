@@ -4,8 +4,10 @@
 Example how to use the /app/storage-Folder of Laravel to protect your downloads and files against unauhorized users.
 
 #### preconditions
-- enable php_fileinfo extension in your php.ini file
-
+1. Enable php_fileinfo extension in your php.ini file
+2. Clone this repo
+3. Navigate to "2013/laravel_protect_files"
+4. Run composer install
 
 #### features
 - includes the database-migration-file
