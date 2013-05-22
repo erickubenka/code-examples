@@ -1,13 +1,18 @@
-## Laravel 4.x
+### Code Example - Laravel 4: proctect files against unauthorized users 
 
-### A Framework For Web Artisans
+#### description
+Example how to use the /app/storage-Folder of Laravel to protect your downloads and files against unauhorized users.
 
-[Official Documentation](http://four.laravel.com) (Under Active Development)
+#### preconditions
+- enable php_fileinfo extension in your php.ini file
 
-### Contributing To Laravel
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+#### features
+- includes the database-migration-file
+- includes the sql dump of underlying database
+- include routes to login and logout users
+- include routes to download files
 
-### License
+#### related post
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
