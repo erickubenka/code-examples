@@ -11,11 +11,10 @@
 				<p></p>
 				<div class="content container-fluid">
 						@if(Session::has('message'))
-						<div class="alert alert-info">
+						<div class="alert alert-info ">
 								{{ Session::get('message') }}
 						</div>
 						@endif
-
 						<div class="row-fluid">
 								<div class="well span3">
 										<h3>User Area</h3>
@@ -32,7 +31,7 @@
 										<a href="{{ URL::to('logout') }}" class="btn btn-warning">Logout</a>
 										@endif
 								</div>
-								<div class="well span9">
+								<div class="well span3">
 										<h3>File List</h3>
 										<a href="{{ URL::to('download/protect.txt') }}">Download protect.txt</a>
 								</div>
