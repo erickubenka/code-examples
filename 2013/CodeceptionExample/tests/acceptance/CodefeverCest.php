@@ -28,7 +28,7 @@ class CodefeverCest
     	// Assert that there is a link with 'kontakt'
     	$I->seeLink('kontakt');
 
-    	// Clik that link
+    	// Click that link
     	$I->click('kontakt');
 
     	// Assert that current url is now code-fever.de/kontakt.html
