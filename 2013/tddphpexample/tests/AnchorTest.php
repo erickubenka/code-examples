@@ -14,7 +14,7 @@ class AnchorTest extends PHPUnit_Framework_TestCase
 	{
 		// arrange
 		$anchor = new Anchor;
-
+		
 		$expected = "<a href='http://code-fever.de'>Code Fever</a>";
 		
 		// act
