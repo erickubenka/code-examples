@@ -19,7 +19,6 @@ Wie zahlreiche andere Packete steht Codeception\AspectMock via Packagist und dam
 Nach einem composer update steht das Framework zur Verfügung.Folgend habe ich im Verzeichnis tests/ eine bootstrap.php Datei erstellt, welche den Composer-Autoloader ausführt und Aspect-Mock lädt.
 
 // tests/bootstrap.php
-
 include __DIR__.'/../vendor/autoload.php'; // composer autoload
 
 $kernel = \AspectMock\Kernel::getInstance();
