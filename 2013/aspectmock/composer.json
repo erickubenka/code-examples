@@ -1,0 +1,17 @@
+{
+    "name": "codefever/aspectmock",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "codeception/aspect-mock": "0.1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src",
+            "tests"
+        ]
+    },
+    "minimum-stability": "dev"
+}
