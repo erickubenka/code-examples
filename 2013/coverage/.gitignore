@@ -1,0 +1,7 @@
+/vendor
+/nbproject
+/coverage
+composer.phar
+composer.lock
+.DS_Store
+/temp
