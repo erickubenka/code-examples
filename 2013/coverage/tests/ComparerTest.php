@@ -17,4 +17,20 @@ class ComparerTest extends PHPUnit_Framework_TestCase
 
 		$this->assertEquals('one > two', $result);
 	}
+
+	public function testCompareWithEqual()
+	{
+		$comparer = new Comparer();
+		$result = $comparer->compare(10, 10);
+
+		$this->assertEquals('one === two', $result);
+	}
+
+	public function testCompareWithNonEqual()
+	{
+		$comparer = new Comparer();
+		$result = $comparer->compare('10', 10);
+
+		$this->assertEquals('something else', $result);
+	}
 }
