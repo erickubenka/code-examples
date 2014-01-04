@@ -1,0 +1,5 @@
+C:\xampp\htdocs\code-examples\2014\ui_test_helper_methods\UITestHelperMethods\CodedUITestProject1\obj\Debug\UITestHelperMethods.csprojResolveAssemblyReference.cache
+C:\xampp\htdocs\code-examples\2014\ui_test_helper_methods\UITestHelperMethods\CodedUITestProject1\bin\Debug\UITestHelperMethods.dll
+C:\xampp\htdocs\code-examples\2014\ui_test_helper_methods\UITestHelperMethods\CodedUITestProject1\bin\Debug\UITestHelperMethods.pdb
+C:\xampp\htdocs\code-examples\2014\ui_test_helper_methods\UITestHelperMethods\CodedUITestProject1\obj\Debug\UITestHelperMethods.dll
+C:\xampp\htdocs\code-examples\2014\ui_test_helper_methods\UITestHelperMethods\CodedUITestProject1\obj\Debug\UITestHelperMethods.pdb
