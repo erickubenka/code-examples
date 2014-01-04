@@ -1,0 +1,19 @@
+{
+    "name": "codefever/psr4example",
+    "description": "Example for",
+    "authors": [
+        {
+            "name": "Eric Kubenka",
+            "email": "info@code-fever.de"
+        }
+    ],
+    "require": {
+        "illuminate/http": "4.1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Example\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

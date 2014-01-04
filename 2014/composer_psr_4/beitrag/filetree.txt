@@ -1,0 +1,14 @@
+src/
+	Connection/
+		Connector.php
+	MyExample.php
+vendor/
+	illuminate/
+		http/ #Die hier vorhande Dopllung basiert auf dem PSR-0-Autoloading von diesem Paket
+			Illuminate/
+				Http/
+					Response.php 
+    illuminate/
+    	http/ #Das wäre das Pendant in PSR-4
+    		Response.php
+
