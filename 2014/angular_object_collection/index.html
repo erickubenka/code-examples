@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <title>Angular Object Collection</title>
+</head>
+<body>
+
+<div ng-controller="basicctrl">
+    <div style="">
+        <input type="text" ng-model="filter"/>
+    </div>
+
+    <div style="float: left; margin-right: 50px;">
+        <h3>Array Collection</h3>
+        <ul ng-repeat="item in arrayCollection | filter:{name: filter} | orderBy:'name'">
+            <li>{{ item.id }}, {{ item.name }}</li>
+        </ul>
+    </div>
+
+    <div style="float: left; margin-right: 50px;">
+
+        <h3>Object Collection</h3>
+        <ul ng-repeat="item in objectCollection | filter:{name: filter} | orderBy:'name'">
+            <li>{{ item.id }}, {{ item.name }}</li>
+        </ul>
+    </div>
+
+    <div style="float: left; margin-right: 50px;">
+
+        <h3>Converted Collection</h3>
+        <ul ng-repeat="item in converted | filter:{name: filter} | orderBy:'name'">
+            <li>{{ item.id }}, {{ item.name }}</li>
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-animate.js"></script>
+
+<script>
+    /**
+     * Created by Eric on 24.02.14.
+     */
+    function basicctrl($scope, $log){
+
+        scope = $scope;
+
+        $scope.arrayCollection = [
+            {id: 1, name: 'Eric'},
+            {id: 2, name: 'Robert'},
+            {id: 3, name: 'Roberto'},
+            {id: 4, name: 'Hans'},
+            {id: 5, name: 'Taylor'},
+            {id: 6, name: 'Jeff'},
+            {id: 7, name: 'Mike'},
+            {id: 8, name: 'Peter'}
+        ];
+
+        $scope.objectCollection = {
+            1: {id: 1, name: 'Eric'},
+            2: {id: 2, name: 'Robert'},
+            3: {id: 3, name: 'Roberto'},
+            4: {id: 4, name: 'Hans'},
+            5: {id: 5, name: 'Taylor'},
+            6: {id: 6, name: 'Jeff'},
+            7: {id: 7, name: 'Mike'},
+            8: {id: 8, name: 'Peter'}
+        };
+
+        $scope.converted = $.map($scope.objectCollection, function(value, index) {
+            return [value];
+        });
+
+        $scope.filter = '';
+
+        $log.log($scope.arrayCollection);
+        $log.log($scope.objectCollection);
+        $log.log('init');
+    }
+</script>
+</body>
+</html>
