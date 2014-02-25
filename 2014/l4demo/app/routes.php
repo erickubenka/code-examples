@@ -35,7 +35,7 @@
 //
 //Route::controller('democtrl', 'DemoController');
 //
-Route::resource('user', 'UserController');
+//Route::resource('user', 'UserController');
 //
 //Route::get('login', function () {
 //    return View::make('demo.auth.login');
@@ -64,5 +64,3 @@ Route::resource('user', 'UserController');
 Route::get('/', function () {
     return View::make('hello');
 });
-
-
