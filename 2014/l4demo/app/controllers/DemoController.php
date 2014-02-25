@@ -16,4 +16,8 @@ class DemoController extends BaseController{
     {
         return View::make('demo.home');
     }
+
+    public function postIndex(){
+        return View::make('demo.home')->with('name', Input::get('name'));
+    }
 } 

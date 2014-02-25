@@ -33,6 +33,7 @@
     <input type="submit" class="btn btn-primary" value="Login"/>
 </form>
 @endunless
+
 @unless(!Auth::check())
 <div class="page-header">
     <h2>You're logged in as {{ Auth::user()->name }}</h2>

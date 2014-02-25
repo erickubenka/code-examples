@@ -22,7 +22,12 @@
 //        return 'wurst.dev';
 //    });
 //});
-//
+
+
+Route::get('/', function () {
+    return View::make('hello');
+});
+
 //Route::get('/demo', function () {
 //    return View::make('demo.home');
 //});
@@ -30,37 +35,32 @@
 //Route::post('/demo', function () {
 //    return View::make('demo.home')->with('name', Input::get('name'));
 //});
-//
-//Route::get('/ctrlaction', 'HomeController@showWelcome');
-//
-//Route::controller('democtrl', 'DemoController');
-//
-//Route::resource('user', 'UserController');
-//
-//Route::get('login', function () {
-//    return View::make('demo.auth.login');
-//});
-//
-//Route::post('login', function () {
-//
-//    $creds = [
-//        'email' => Input::get('email'),
-//        'password' => Input::get('password')
-//    ];
-//
-//    if(Auth::attempt($creds)){
-//        return Redirect::to('login')->with('success', "You're logged in");
-//    }
-//
-//        return Redirect::to('login')->with('error', "Wrong credentials");
-//});
-//
-//Route::post('logout', function () {
-//    Auth::logout();
-//    return Redirect::to('login')->with('success', "You're logged out");
-//});
+
+//Route::get('/demo', 'DemoController@getIndex');
+
+//Route::controller('demo', 'DemoController');
+
+Route::resource('user', 'UserController');
 
 
-Route::get('/', function () {
-    return View::make('hello');
+Route::get('login', function () {
+    return View::make('demo.auth.login');
+});
+
+Route::post('login', function () {
+    $credentials = [
+        'email' => Input::get('email'),
+        'password' => Input::get('password')
+    ];
+
+    if (Auth::attempt($credentials)) {
+        return Redirect::to('login')->with('success', 'Well done. Welcome. It works');
+    }
+
+    return Redirect::to('login')->with('error', 'Something went wrong.');
+});
+
+Route::post('logout', function(){
+    Auth::logout();
+    return Redirect::to('login')->with('success', "You're logged out successfully");
 });
