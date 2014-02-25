@@ -11,7 +11,56 @@
 |
 */
 
-Route::get('/', function()
+Route::group(array('domain' => 'local.dev'), function ()
 {
-	return View::make('hello');
+    Route::get('/', function ()
+    {
+        return 'local.dev';
+    });
 });
+
+Route::group(array('domain' => 'wurst.dev'), function ()
+{
+    Route::get('/', function ()
+    {
+        return 'wurst.dev';
+    });
+});
+
+/**
+ * Closure Route
+ */
+Route::get('/demo', function ()
+{
+    return View::make('demo.home');
+});
+
+Route::post('/demo', function(){
+   return View::make('demo.home')->with('name', Input::get('name'));
+});
+
+/**
+ * Controller Action Routing
+ */
+Route::get('/ctrlaction', 'HomeController@showWelcome');
+
+/**
+ * RESTful Controller / Routing
+ * Base Uri And Controller
+ */
+Route::controller('democtrl', 'DemoController');
+
+/**
+ * Resource Controller
+ */
+Route::resource('user', 'UserController');
+
+/**
+ * Default Hello Route
+ */
+Route::get('/', function ()
+{
+    return View::make('hello');
+});
+
+
