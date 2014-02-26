@@ -40,27 +40,27 @@ Route::get('/', function () {
 
 //Route::controller('demo', 'DemoController');
 
-Route::resource('user', 'UserController');
+Route::resource('user', 'VmUserController');
 
-
-Route::get('login', function () {
-    return View::make('demo.auth.login');
-});
-
-Route::post('login', function () {
-    $credentials = [
-        'email' => Input::get('email'),
-        'password' => Input::get('password')
-    ];
-
-    if (Auth::attempt($credentials)) {
-        return Redirect::to('login')->with('success', 'Well done. Welcome. It works');
-    }
-
-    return Redirect::to('login')->with('error', 'Something went wrong.');
-});
-
-Route::post('logout', function(){
-    Auth::logout();
-    return Redirect::to('login')->with('success', "You're logged out successfully");
-});
+//
+//Route::get('login', function () {
+//    return View::make('demo.auth.login');
+//});
+//
+//Route::post('login', function () {
+//    $credentials = [
+//        'email' => Input::get('email'),
+//        'password' => Input::get('password')
+//    ];
+//
+//    if (Auth::attempt($credentials)) {
+//        return Redirect::to('login')->with('success', 'Well done. Welcome. It works');
+//    }
+//
+//    return Redirect::to('login')->with('error', 'Something went wrong.');
+//});
+//
+//Route::post('logout', function(){
+//    Auth::logout();
+//    return Redirect::to('login')->with('success', "You're logged out successfully");
+//});

@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends \BaseController {
+class VmUserController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,8 +9,7 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-        $viewModel = new UserListViewModel();
-        $users = $viewModel->load();
+        $users = User::all();
         return Response::view('demo.user.list', ['users' => $users]);
 	}
 
@@ -31,7 +30,7 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-        $user = new UserModel;
+        $user = new User();
 
         $user->name = Input::get('name');;
         $user->email = Input::get('email');;
@@ -50,8 +49,7 @@ class UserController extends \BaseController {
 	 */
 	public function show($id)
 	{
-        $viewModel = new UserModel();
-        $user = $viewModel->load($id);
+        $user = User::find($id);
 
         return Response::view('demo.user.profile', ['user' => $user]);
 	}
@@ -64,8 +62,7 @@ class UserController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-        $viewModel = new UserModel();
-        $user = $viewModel->load($id);
+        $user = User::find($id);
         return Response::view('demo.user.edit', ['user' => $user]);
 	}
 
@@ -79,9 +76,7 @@ class UserController extends \BaseController {
 	{
         $input = Input::all();
 
-        $user = new UserModel();
-        $user->load($id);
-
+        $user = User::find($id);
         $user->email = $input['email'];
         $user->name = $input['name'];
 
@@ -98,8 +93,7 @@ class UserController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$user = new UserModel();
-        $user->load($id);
+		$user = User::find($id);
         $user->delete();
 
         return Redirect::route('user.index')->with('success', 'User deleted');
