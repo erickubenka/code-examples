@@ -1,6 +1,6 @@
 <?php
 
-class VmUserController extends \BaseController {
+class LvUserController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +9,8 @@ class VmUserController extends \BaseController {
 	 */
 	public function index()
 	{
-        $users = User::all();
+        $users = User::paginate(3);
+
         return Response::view('demo.user.list', ['users' => $users]);
 	}
 
