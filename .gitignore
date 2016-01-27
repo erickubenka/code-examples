@@ -1,1 +1,5 @@
 /2013/laravel4_protect_files/nbproject/private/
+
+*.iml
+.idea/
+target/
