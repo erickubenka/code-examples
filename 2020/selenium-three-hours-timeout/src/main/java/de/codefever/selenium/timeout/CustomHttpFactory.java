@@ -12,7 +12,7 @@ import java.time.Duration;
  */
 public class CustomHttpFactory implements HttpClient.Factory {
 
-    protected Duration connectionTimeout = Duration.ofSeconds(120L); // ill, when connect does not succeed in this timeout
+    protected Duration connectionTimeout = Duration.ofSeconds(120L); // kills, when connect does not succeed in this timeout
     protected Duration readTimeout = Duration.ofSeconds(300L); // Kill hanging / stuck selenium commands after this timeout.
     private final ConnectionPool pool = new ConnectionPool();
 

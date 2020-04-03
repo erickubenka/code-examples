@@ -22,8 +22,5 @@ public class GooglePageTest {
         final HttpCommandExecutor executor = new HttpCommandExecutor(new HashMap<>(), new URL("http://localhost:4444/wd/hub"), new CustomHttpFactory());
         final WebDriver driver = new RemoteWebDriver(executor, new ChromeOptions());
         driver.get("https://google.de");
-
     }
-
-
 }
