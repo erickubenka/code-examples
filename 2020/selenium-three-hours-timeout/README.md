@@ -90,7 +90,9 @@ Mit Selenium 4 wurde der `HttpClient` überarbeitet und die hier gezeigte Lösun
 
 
 ## Weiterführende Links
+Den Quellcode für dieses Beispiel gibt es wie immer auf [GitHub](https://github.com/erickubenka/code-examples/tree/master/2020/selenium-three-hours-timeout).
 
 [GitHub :: Selenium](https://github.com/SeleniumHQ/selenium)  
 [GitHub :: Selenium HttpClient](https://github.com/SeleniumHQ/selenium/blob/selenium-3.141.59/java/client/src/org/openqa/selenium/remote/http/HttpClient.java)  
 [DockerHub :: Selenium Docker Container](https://hub.docker.com/r/selenium/standalone-chrome/)
+[GitHub :: Beispiel-Code](https://github.com/erickubenka/code-examples/tree/master/2020/selenium-three-hours-timeout)
