@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>code fever - DotDotDot example</title>
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <!-- DotDotDot -->
+        <script src="jquery.dotdotdot.js"></script>
+        <!-- Bootstrap !-->
+        <script src="bootstrap.js"></script>
+        <link href="bootstrap.css" rel="stylesheet" media="screen">
+
+        <style>
+            #wrapper
+            {
+                margin: 0 auto;
+            }
+
+            p.well
+            {
+                width: 200px;
+                height: 100px;
+                font-size: 14px;
+                line-height: 16px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper" class="row">
+            <div class="span4">
+                <h3>Ohne DotDotDot</h3>
+                <p class="well">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur 
+                </p>
+            </div>
+
+            <div class="span4 offset1">
+                <h3>Mit DotDotDot</h3>
+                <p class="well dotdotdot">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur 
+                </p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#wrapper p.dotdotdot").dotdotdot();
+            });
+        </script>
+    </body>
+
+</html>
