@@ -1,6 +1,6 @@
 ## Das Problem [code-fever.de Blog-Eintrag](https://code-fever.de/artikel/selenium-shadow-dom-und-shadow-root.html)
 
-Schon seit Jahren arbeite ich in java-basierten Testautomatisierungsprojekten ausschließlich mit TestNG als
+Schon seit Jahren arbeite ich in java-basierten Testautomatisierungsprojekten ausschließlich mit `TestNG` als
 Testframework.  
 Als ich im Jahr 2014 im Beruf die ersten Projekte umsetzte, konnte TestNG einfach durch ein besseres Feature-Set und
 eine deutlich bessere parallelisierte Testausführung punkten.

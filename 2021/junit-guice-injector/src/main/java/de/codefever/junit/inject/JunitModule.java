@@ -7,8 +7,8 @@ package de.codefever.junit.inject;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
-import de.codefever.junit.storage.StorageInterface;
 import de.codefever.junit.storage.HashMapStorage;
+import de.codefever.junit.storage.StorageInterface;
 
 /**
  * @author Eric Kubenka
