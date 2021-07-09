@@ -7,6 +7,10 @@ import de.codefever.junit.storage.StorageInterface;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Eric Kubenka
+ * creation date: 09.07.2021 - 08:20
+ */
 @WithGuice(modules = JunitModule.class)
 public class StorageTest {
 
