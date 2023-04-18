@@ -1,13 +1,14 @@
-## Die Idee
-Für einen Geburtstag im Bekanntenkreis wollte ich ein kleines Spiel einer Gameshow aus dem Fernsehen als Client-Server-Anwendung nachbauen. Dabei soll sich ein Administrator als jener ausgeben können und als Spielleiter fungieren, während sich Clients zur reinen Anzeige der Daten, beziehungsweise des Spiels, zum Server verbinden und in Echtzeit die aktuellen Fragen, Timer, Antwortversuche und Lösungen anzeigen, sobald der Spielleiter diese zur Anzeige freigibt.
+### Die Idee
+Für einen Geburtstag im Bekanntenkreis wollte ich ein kleines Spiel einer Gameshow aus dem Fernsehen als Client-Server-Anwendung nachbauen. Dabei soll sich ein Administrator als jener ausgeben können und als Spielleiter fungieren, während sich Clients zur reinen Anzeige der Daten, beziehungsweise des Spiels, zum Server verbinden und in Echtzeit die aktuellen Fragen, Timer, Antwortversuche und Lösungen anzeigen, sobald der Spielleiter diese zur Anzeige freigibt. 
 
-## Angular Boiler Plate
-Für den Start mit einem Angular Template, nutzte ich die (angular-docker-boilerplate)[https://github.com/erickubenka/angular-docker-boilerplate], welche ich mir zu diesem Zweck vor eingier Zeit geschrieben habe.
+### Angular Boiler Plate
+Für den Start mit einem Angular Template, nutzte ich die [angular-docker-boilerplate](https://github.com/erickubenka/angular-docker-boilerplate), welche ich mir zu diesem Zweck vor eingier Zeit geschrieben habe.
 
-## WebSocket Server
+### WebSocket Server
 Um die Hürde der Echtzeitkommunikation zu meistern, entschied ich mich für einen WebSocket-Server, welcher die Daten des Spielleiters empfängt und an alle Clients/Displays broadcasten soll.
 Dazu legte ich mir ein `server` Verzeichnis in meinem Projekt-Root an und platzierte eine simple `package.json`-File mit folgenden Abhängikeiten darion:
 
+#### server/package.json
 ````json
 {
   "dependencies": {
@@ -16,9 +17,9 @@ Dazu legte ich mir ein `server` Verzeichnis in meinem Projekt-Root an und platzi
 }
 ````
 
-Die Abhängikeiten können dann mittels `npm install` entsprechend installiert werden. Der Server-Code für mein Broadcasting Anliegen sieht dann wie foglt aus und wurde in `server.mjs` abgelegt. Dieser einfache Code wird bei Ausführung einen WebSocket-Server auf Port 8080 starten und sobald er Daten empfängt, diese an alle registrierten Clients außer sich selbst senden. Das ist nun nicht der sicherste Ansatz, da jeder Client Daten senden kann ohne das eine serverseitige Validierung/Authentifiaktion stattfindet, aber für meinen Zweck vollkommen ausreichend.
+Die Abhängikeiten können dann mittels `npm install` entsprechend installiert werden. Der Server-Code für mein Broadcasting Anliegen sieht dann wie foglt aus und wurde in `server.mjs` abgelegt. Dieser einfache Code wird bei Ausführung einen WebSocket-Server auf Port 8080 starten und sobald er Daten empfängt, diese an alle registrierten Clients außer sich selbst senden. Das ist nun nicht der sicherste Ansatz, da jeder Client Daten senden kann ohne das eine serverseitige Validierung/Authentifiaktion stattfindet, aber für meinen Zweck vollkommen ausreichend. 
 
-
+#### server/server.mjs
 ````typescript
 import {WebSocketServer} from 'ws';
 
@@ -50,6 +51,7 @@ ng generate comopnent display
 Der `service/web-socket.service.ts` beinhaltet neben einer kleinen `struct`-Definitoon für die Nachrichten im Wesentlichen zwei Funktionen. Zum einen wird bei Instaziierung und dem damit verbundenem Konstruktoraufruf die Verbindung zum WebSocket-Server auf Port 8080 hergestellt. Soabld diese Verbindung hergestellt wurde, wird eine Liste mit `Message`-Objekten entsprechend gefüllt, sobald diese vom WebSocket-Server empfangen werden.
 Die zweite Funktion ist `sendMessage` welche entsprechend vom Admin-Interface aus aufgerufen werden muss, wenn die Daten aktualisiert werden sollen.
 
+#### service/web-socket.service.ts
 ````typescript
 import {Injectable} from '@angular/core';
 
@@ -128,7 +130,7 @@ export class WebSocketService {
       }
     };
     return new AnonymousSubject<MessageEvent>(observer, observable);
-  }
+  }%MCEPASTEBIN%
 }
 
 function waitForSocketConnection(socket: any, callback: any) {
@@ -150,7 +152,7 @@ function waitForSocketConnection(socket: any, callback: any) {
 Jeweils in `display.component.ts`, als auch in `admin.component.ts` muss der `WebSocketService` im Konstruktor als Abhängigkeit instaziiert werden.
 Auf der Client-Seite werden die Daten der `webSocketService.messages`-List einfach mittels einem `subscribe()` abgerufen und der Komponentenvariable `displayData` zugewiesen. Somit kann die UI direkt auf neue Daten des WebSocket-Servers reagieren.
 
-display.component.ts
+#### display.component.ts
 ````
 export class DisplayComponent {
 
@@ -167,8 +169,9 @@ export class DisplayComponent {
 }
 ````
 
-Im `admin.component.ts` wird entsprechend bei Initialisierung direkt ein Aufruf `webSocketService.sendMessage()` durchgeführt um den Status `started` zu übermitteln. Für Demo-Zwecke wird in der Admin-UI ein Button implementiert, welcher bei Jedem Klick den Counter erhöhren soll und via WebSocket an den Client übertragen soll.
+Im `admin.component.ts` wird entsprechend bei Initialisierung direkt ein Aufruf `webSocketService.sendMessage()` durchgeführt um den Status `started` zu übermitteln. Für Demo-Zwecke wird in der Admin-UI ein Button implementiert, welcher bei Jedem Klick den Counter erhöhren soll und via WebSocket an den Client übertragen soll. 
 
+#### admin.component.ts
 ````
 export class AdminComponent {
 
@@ -187,4 +190,4 @@ export class AdminComponent {
 
 Die beiden Komponenten habe ich für Demozwecke dann auf den Routen `/admin` und `/display` im Root-Module der Angular-Anwendung deklariert und die Anzeige entsprechend vorgenommen. Wenn der WebSocket-Server  gestratet ist, wird auf der `display`-Route sobald die `admin`-Route aufgerufen wurde, entsprechend der Status auf `started` gesetzt und mit jedem Klick auf die Schaltfläche der Admin-Seite in Echtzeit der Wert für `displayData.data.counter` um 1 erhöht.
 
-Das vollständige Code-Beispiel ist wie üglich in meinem (GitHub-Repo)[https://github.com/erickubenka/code-examples/2023/websocket-angular-example] abrufbar.
+Das vollständige Code-Beispiel ist wie üglich in meinem [GitHub-Repo](https://github.com/erickubenka/code-examples/2023/websocket-angular-example) abrufbar.
