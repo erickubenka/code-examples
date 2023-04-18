@@ -1,0 +1,22 @@
+version: "3"
+services:
+  node:
+    build: .
+    image: "code-fever/angular-app:latest"
+    user: "node"
+    container_name: websocket-angular-example
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - ./:/home/node/app
+    ports:
+      - "4200:4200"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        ng new angular-app
+        cd angular-app/
+        npm install
+        npm start
