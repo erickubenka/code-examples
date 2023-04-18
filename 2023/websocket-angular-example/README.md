@@ -17,7 +17,7 @@ Dazu legte ich mir ein `server` Verzeichnis in meinem Projekt-Root an und platzi
 }
 ````
 
-Die Abhängikeiten können dann mittels `npm install` entsprechend installiert werden. Der Server-Code für mein Broadcasting Anliegen sieht dann wie foglt aus und wurde in `server.mjs` abgelegt. Dieser einfache Code wird bei Ausführung einen WebSocket-Server auf Port 8080 starten und sobald er Daten empfängt, diese an alle registrierten Clients außer sich selbst senden. Das ist nun nicht der sicherste Ansatz, da jeder Client Daten senden kann ohne das eine serverseitige Validierung/Authentifiaktion stattfindet, aber für meinen Zweck vollkommen ausreichend. 
+Die Abhängikeiten können dann mittels `npm install` entsprechend installiert werden. Der Server-Code für mein Broadcasting Anliegen sieht dann wie folgt aus und wurde in `server.mjs` abgelegt. Dieser einfache Code wird bei Ausführung einen WebSocket-Server auf Port 8080 starten und sobald er Daten empfängt, diese an alle registrierten Clients, außer sich selbst, senden. Das ist nun nicht der sicherste Ansatz, da jeder Client Daten senden kann ohne das eine serverseitige Validierung/Authentifiaktion stattfindet, aber für meinen Zweck vollkommen ausreichend. 
 
 #### server/server.mjs
 ````typescript
@@ -41,7 +41,7 @@ wss.on('connection', function connection(ws) {
 ````
 
 ### WebSocket in Angular einbinden
-Nun galt es den Server entsprechend im Angular einzubinden. Dazu erstellte ich mir einen entsprechenden Service, welcher dann in den Admin und Display Modulen verwendet werden kann. Außerdem brauche ich zwei Komponenten, jeweils eine für die Admin- und Client-Seite
+Nun galt es, den Server entsprechend im Angular einzubinden. Dazu erstellte ich mir einen entsprechenden Service, welcher dann in den Admin und Display Modulen verwendet werden kann. Außerdem brauche ich zwei Komponenten, jeweils eine für die Admin- und Client-Seite
 ````
 ng generate service services/web-socket
 ng generate component admin
@@ -49,7 +49,7 @@ ng generate comopnent display
 ````
 
 Der `service/web-socket.service.ts` beinhaltet neben einer kleinen `struct`-Definitoon für die Nachrichten im Wesentlichen zwei Funktionen. Zum einen wird bei Instaziierung und dem damit verbundenem Konstruktoraufruf die Verbindung zum WebSocket-Server auf Port 8080 hergestellt. Soabld diese Verbindung hergestellt wurde, wird eine Liste mit `Message`-Objekten entsprechend gefüllt, sobald diese vom WebSocket-Server empfangen werden.
-Die zweite Funktion ist `sendMessage` welche entsprechend vom Admin-Interface aus aufgerufen werden muss, wenn die Daten aktualisiert werden sollen.
+Die zweite Funktion ist `sendMessage`, welche, entsprechend vom Admin-Interface aus, aufgerufen werden muss, wenn die Daten aktualisiert werden sollen.
 
 #### service/web-socket.service.ts
 ````typescript
@@ -169,7 +169,7 @@ export class DisplayComponent {
 }
 ````
 
-Im `admin.component.ts` wird entsprechend bei Initialisierung direkt ein Aufruf `webSocketService.sendMessage()` durchgeführt um den Status `started` zu übermitteln. Für Demo-Zwecke wird in der Admin-UI ein Button implementiert, welcher bei Jedem Klick den Counter erhöhren soll und via WebSocket an den Client übertragen soll. 
+Im `admin.component.ts` wird entsprechend bei Initialisierung direkt ein Aufruf `webSocketService.sendMessage()` durchgeführt um den Status `started` zu übermitteln. Für Demo-Zwecke wird in der Admin-UI ein Button implementiert, welcher bei jedem Klick den Counter erhöhen soll und via WebSocket an den Client übertragen soll. 
 
 #### admin.component.ts
 ````
@@ -188,6 +188,6 @@ export class AdminComponent {
 }
 ````
 
-Die beiden Komponenten habe ich für Demozwecke dann auf den Routen `/admin` und `/display` im Root-Module der Angular-Anwendung deklariert und die Anzeige entsprechend vorgenommen. Wenn der WebSocket-Server  gestratet ist, wird auf der `display`-Route sobald die `admin`-Route aufgerufen wurde, entsprechend der Status auf `started` gesetzt und mit jedem Klick auf die Schaltfläche der Admin-Seite in Echtzeit der Wert für `displayData.data.counter` um 1 erhöht.
+Die beiden Komponenten habe ich für Demozwecke dann auf den Routen `/admin` und `/display` im Root-Module der Angular-Anwendung deklariert und die Anzeige entsprechend vorgenommen. Wenn der WebSocket-Server  gestartet ist, wird auf der `display`-Route, sobald die `admin`-Route aufgerufen wurde, entsprechend der Status auf `started` gesetzt und mit jedem Klick auf die Schaltfläche der Admin-Seite in Echtzeit der Wert für `displayData.data.counter` um 1 erhöht.
 
-Das vollständige Code-Beispiel ist wie üglich in meinem [GitHub-Repo](https://github.com/erickubenka/code-examples/2023/websocket-angular-example) abrufbar.
+Das vollständige Code-Beispiel ist wie üblich in meinem [GitHub-Repo](https://github.com/erickubenka/code-examples/2023/websocket-angular-example) abrufbar.
